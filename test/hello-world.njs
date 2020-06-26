@@ -1,1 +1,1 @@
-let firstNum: number = 10;
+let firstNum: i8 = 10;

@@ -2,9 +2,11 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"github.com/urfave/cli/v2"
+	"io/ioutil"
 	"nativejs/internal"
+	"nativejs/internal/codegen"
+	"nativejs/internal/parser"
 	"os"
 )
 
@@ -29,7 +31,16 @@ func main() {
 			ArgsUsage:   "[filename]",
 			Action: func(ctx *cli.Context) error {
 				if ctx.NArg() == 1 {
-					fmt.Printf("Building %s...", ctx.Args().Get(0))
+					source, err := ioutil.ReadFile(ctx.Args().Get(0))
+
+					if err != nil {
+						return err
+					}
+
+					// parse the source code
+					grammarParser := parser.NewParser(string(source))
+					// generate LLVM IR
+					codegen.GenerateIR(grammarParser.Program())
 
 					return nil
 				} else {
