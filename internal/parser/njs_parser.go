@@ -16,10 +16,10 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 16, 27, 4,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 17, 27, 4,
 	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 3, 2, 3, 2, 3, 3, 3, 3, 3,
 	3, 3, 4, 3, 4, 3, 4, 5, 4, 19, 10, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 5, 3,
-	5, 3, 5, 2, 2, 6, 2, 4, 6, 8, 2, 3, 3, 2, 13, 14, 2, 23, 2, 10, 3, 2, 2,
+	5, 3, 5, 2, 2, 6, 2, 4, 6, 8, 2, 3, 3, 2, 13, 15, 2, 23, 2, 10, 3, 2, 2,
 	2, 4, 12, 3, 2, 2, 2, 6, 15, 3, 2, 2, 2, 8, 24, 3, 2, 2, 2, 10, 11, 9,
 	2, 2, 2, 11, 3, 3, 2, 2, 2, 12, 13, 7, 6, 2, 2, 13, 14, 5, 2, 2, 2, 14,
 	5, 3, 2, 2, 2, 15, 16, 7, 8, 2, 2, 16, 18, 7, 11, 2, 2, 17, 19, 5, 4, 3,
@@ -32,12 +32,12 @@ var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
 	"", "", "", "','", "':'", "'='", "'let'", "';'", "'const'", "", "", "'number'",
-	"'i8'",
+	"'i8'", "'i16'",
 }
 var symbolicNames = []string{
 	"", "MultiLineComment", "SingleLineComment", "Comma", "Colon", "EqualSign",
 	"Let", "Semicolon", "Const", "Identifier", "NumberLiteral", "INT", "I8",
-	"WhiteSpaces", "LineTerminator",
+	"I16", "WhiteSpaces", "LineTerminator",
 }
 
 var ruleNames = []string{
@@ -84,8 +84,9 @@ const (
 	NJSParserNumberLiteral     = 10
 	NJSParserINT               = 11
 	NJSParserI8                = 12
-	NJSParserWhiteSpaces       = 13
-	NJSParserLineTerminator    = 14
+	NJSParserI16               = 13
+	NJSParserWhiteSpaces       = 14
+	NJSParserLineTerminator    = 15
 )
 
 // NJSParser rules.
@@ -142,6 +143,10 @@ func (s *TypesContext) I8() antlr.TerminalNode {
 	return s.GetToken(NJSParserI8, 0)
 }
 
+func (s *TypesContext) I16() antlr.TerminalNode {
+	return s.GetToken(NJSParserI16, 0)
+}
+
 func (s *TypesContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -188,7 +193,7 @@ func (p *NJSParser) Types() (localctx ITypesContext) {
 		p.SetState(8)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(_la == NJSParserINT || _la == NJSParserI8) {
+		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<NJSParserINT)|(1<<NJSParserI8)|(1<<NJSParserI16))) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)

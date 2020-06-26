@@ -4,7 +4,7 @@ options {
   tokenVocab=NJSLexer;
 }
 
-types: INT | I8;
+types: INT | I8 | I16;
 typeAnnotation: ':' types;
 
 variableDeclaration: 'let' Identifier typeAnnotation? '=' NumberLiteral ';';

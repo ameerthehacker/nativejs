@@ -42,6 +42,8 @@ func main() {
 					// generate LLVM IR
 					codegen.GenerateIR(grammarParser.Program())
 
+					print(codegen.GetIR())
+
 					return nil
 				} else {
 					return errors.New("no filename was provided, run njs help to know more")

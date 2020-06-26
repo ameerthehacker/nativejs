@@ -10,8 +10,9 @@ Identifier=9
 NumberLiteral=10
 INT=11
 I8=12
-WhiteSpaces=13
-LineTerminator=14
+I16=13
+WhiteSpaces=14
+LineTerminator=15
 ','=3
 ':'=4
 '='=5
@@ -20,3 +21,4 @@ LineTerminator=14
 'const'=8
 'number'=11
 'i8'=12
+'i16'=13
