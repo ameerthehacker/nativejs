@@ -28,6 +28,10 @@ func (njsListener) EnterVariableDeclaration(cxt *parser.VariableDeclarationConte
 	GenVariableDeclaration(module, cxt)
 }
 
+func (njsListener) EnterFunctionCall(cxt *parser.FunctionCallContext) {
+	println("Calling function", cxt.Identifier().GetText())
+}
+
 func GenerateIR(cxt parser.IProgramContext) string {
 	module = ir.NewModule()
 
