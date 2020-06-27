@@ -34,6 +34,7 @@ func (njsListener) EnterFunctionCall(cxt *parser.FunctionCallContext) {
 
 func GenerateIR(cxt parser.IProgramContext) string {
 	module = ir.NewModule()
+	module.TargetTriple = "x86_64-apple-darwin-gnu"
 
 	antlr.ParseTreeWalkerDefault.Walk(&njsListener{}, cxt)
 

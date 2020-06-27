@@ -1,3 +1,3 @@
-let firstNum: i16 = 10;
+let firstNum: i8 = 10;
 
 dump(10);

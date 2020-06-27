@@ -3,7 +3,7 @@ package codegen
 import (
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/llir/llvm/ir"
-	constant2 "github.com/llir/llvm/ir/constant"
+	"github.com/llir/llvm/ir/constant"
 	"github.com/llir/llvm/ir/types"
 	"nativejs/internal"
 	"nativejs/internal/parser"
@@ -35,10 +35,11 @@ func GenVariableDeclaration(module *ir.Module, cxt *parser.VariableDeclarationCo
 
 	switch variableType {
 	case types.I8, types.I16, types.I32:
-		constant, err := constant2.NewIntFromString(new(types.IntType), initializer)
+		globalVariable := module.NewGlobal(variableName, variableType)
+		initializer, err := constant.NewIntFromString(new(types.IntType), initializer)
 
 		internal.Must(err)
 
-		module.NewGlobalDef(variableName, constant)
+		globalVariable.Init = initializer
 	}
 }
