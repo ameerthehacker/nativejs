@@ -33,11 +33,35 @@ func (s *BaseNJSParserListener) EnterTypeAnnotation(ctx *TypeAnnotationContext) 
 // ExitTypeAnnotation is called when production typeAnnotation is exited.
 func (s *BaseNJSParserListener) ExitTypeAnnotation(ctx *TypeAnnotationContext) {}
 
+// EnterBlock is called when production block is entered.
+func (s *BaseNJSParserListener) EnterBlock(ctx *BlockContext) {}
+
+// ExitBlock is called when production block is exited.
+func (s *BaseNJSParserListener) ExitBlock(ctx *BlockContext) {}
+
+// EnterFunctionDeclaration is called when production functionDeclaration is entered.
+func (s *BaseNJSParserListener) EnterFunctionDeclaration(ctx *FunctionDeclarationContext) {}
+
+// ExitFunctionDeclaration is called when production functionDeclaration is exited.
+func (s *BaseNJSParserListener) ExitFunctionDeclaration(ctx *FunctionDeclarationContext) {}
+
 // EnterExpression is called when production expression is entered.
 func (s *BaseNJSParserListener) EnterExpression(ctx *ExpressionContext) {}
 
 // ExitExpression is called when production expression is exited.
 func (s *BaseNJSParserListener) ExitExpression(ctx *ExpressionContext) {}
+
+// EnterAssignmentStatement is called when production assignmentStatement is entered.
+func (s *BaseNJSParserListener) EnterAssignmentStatement(ctx *AssignmentStatementContext) {}
+
+// ExitAssignmentStatement is called when production assignmentStatement is exited.
+func (s *BaseNJSParserListener) ExitAssignmentStatement(ctx *AssignmentStatementContext) {}
+
+// EnterStatement is called when production statement is entered.
+func (s *BaseNJSParserListener) EnterStatement(ctx *StatementContext) {}
+
+// ExitStatement is called when production statement is exited.
+func (s *BaseNJSParserListener) ExitStatement(ctx *StatementContext) {}
 
 // EnterVariableDeclaration is called when production variableDeclaration is entered.
 func (s *BaseNJSParserListener) EnterVariableDeclaration(ctx *VariableDeclarationContext) {}

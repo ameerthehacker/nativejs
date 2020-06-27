@@ -16,40 +16,55 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 21, 44, 4,
-	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 3,
-	2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 4, 3, 4, 3, 5, 3, 5, 3, 5, 5, 5, 25, 10,
-	5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 7, 3,
-	7, 7, 7, 39, 10, 7, 12, 7, 14, 7, 42, 11, 7, 3, 7, 2, 2, 8, 2, 4, 6, 8,
-	10, 12, 2, 4, 3, 2, 16, 18, 4, 2, 11, 11, 21, 21, 2, 40, 2, 14, 3, 2, 2,
-	2, 4, 16, 3, 2, 2, 2, 6, 19, 3, 2, 2, 2, 8, 21, 3, 2, 2, 2, 10, 30, 3,
-	2, 2, 2, 12, 40, 3, 2, 2, 2, 14, 15, 9, 2, 2, 2, 15, 3, 3, 2, 2, 2, 16,
-	17, 7, 6, 2, 2, 17, 18, 5, 2, 2, 2, 18, 5, 3, 2, 2, 2, 19, 20, 9, 3, 2,
-	2, 20, 7, 3, 2, 2, 2, 21, 22, 7, 8, 2, 2, 22, 24, 7, 11, 2, 2, 23, 25,
-	5, 4, 3, 2, 24, 23, 3, 2, 2, 2, 24, 25, 3, 2, 2, 2, 25, 26, 3, 2, 2, 2,
-	26, 27, 7, 7, 2, 2, 27, 28, 7, 12, 2, 2, 28, 29, 7, 9, 2, 2, 29, 9, 3,
-	2, 2, 2, 30, 31, 7, 11, 2, 2, 31, 32, 7, 14, 2, 2, 32, 33, 5, 6, 4, 2,
-	33, 34, 7, 15, 2, 2, 34, 35, 7, 9, 2, 2, 35, 11, 3, 2, 2, 2, 36, 39, 5,
-	8, 5, 2, 37, 39, 5, 10, 6, 2, 38, 36, 3, 2, 2, 2, 38, 37, 3, 2, 2, 2, 39,
-	42, 3, 2, 2, 2, 40, 38, 3, 2, 2, 2, 40, 41, 3, 2, 2, 2, 41, 13, 3, 2, 2,
-	2, 42, 40, 3, 2, 2, 2, 5, 24, 38, 40,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 22, 79, 4,
+	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
+	8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 3, 2, 3, 2, 3, 3, 3, 3,
+	3, 3, 3, 4, 3, 4, 7, 4, 30, 10, 4, 12, 4, 14, 4, 33, 11, 4, 3, 4, 3, 4,
+	3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 6, 3, 6, 3, 6, 5, 6, 46, 10, 6,
+	3, 7, 3, 7, 3, 7, 3, 7, 3, 7, 3, 8, 3, 8, 3, 9, 3, 9, 3, 9, 5, 9, 58, 10,
+	9, 3, 9, 3, 9, 3, 9, 3, 9, 3, 10, 3, 10, 3, 10, 3, 10, 3, 10, 3, 10, 3,
+	11, 3, 11, 3, 11, 3, 11, 7, 11, 74, 10, 11, 12, 11, 14, 11, 77, 11, 11,
+	3, 11, 2, 2, 12, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 2, 3, 3, 2, 16, 18,
+	2, 76, 2, 22, 3, 2, 2, 2, 4, 24, 3, 2, 2, 2, 6, 27, 3, 2, 2, 2, 8, 36,
+	3, 2, 2, 2, 10, 45, 3, 2, 2, 2, 12, 47, 3, 2, 2, 2, 14, 52, 3, 2, 2, 2,
+	16, 54, 3, 2, 2, 2, 18, 63, 3, 2, 2, 2, 20, 75, 3, 2, 2, 2, 22, 23, 9,
+	2, 2, 2, 23, 3, 3, 2, 2, 2, 24, 25, 7, 6, 2, 2, 25, 26, 5, 2, 2, 2, 26,
+	5, 3, 2, 2, 2, 27, 31, 7, 11, 2, 2, 28, 30, 5, 14, 8, 2, 29, 28, 3, 2,
+	2, 2, 30, 33, 3, 2, 2, 2, 31, 29, 3, 2, 2, 2, 31, 32, 3, 2, 2, 2, 32, 34,
+	3, 2, 2, 2, 33, 31, 3, 2, 2, 2, 34, 35, 7, 12, 2, 2, 35, 7, 3, 2, 2, 2,
+	36, 37, 7, 15, 2, 2, 37, 38, 7, 20, 2, 2, 38, 39, 7, 9, 2, 2, 39, 40, 7,
+	10, 2, 2, 40, 41, 5, 6, 4, 2, 41, 9, 3, 2, 2, 2, 42, 46, 7, 20, 2, 2, 43,
+	46, 7, 19, 2, 2, 44, 46, 5, 18, 10, 2, 45, 42, 3, 2, 2, 2, 45, 43, 3, 2,
+	2, 2, 45, 44, 3, 2, 2, 2, 46, 11, 3, 2, 2, 2, 47, 48, 7, 20, 2, 2, 48,
+	49, 7, 7, 2, 2, 49, 50, 5, 10, 6, 2, 50, 51, 7, 8, 2, 2, 51, 13, 3, 2,
+	2, 2, 52, 53, 5, 12, 7, 2, 53, 15, 3, 2, 2, 2, 54, 55, 7, 13, 2, 2, 55,
+	57, 7, 20, 2, 2, 56, 58, 5, 4, 3, 2, 57, 56, 3, 2, 2, 2, 57, 58, 3, 2,
+	2, 2, 58, 59, 3, 2, 2, 2, 59, 60, 7, 7, 2, 2, 60, 61, 7, 19, 2, 2, 61,
+	62, 7, 8, 2, 2, 62, 17, 3, 2, 2, 2, 63, 64, 7, 20, 2, 2, 64, 65, 7, 9,
+	2, 2, 65, 66, 5, 10, 6, 2, 66, 67, 7, 10, 2, 2, 67, 68, 7, 8, 2, 2, 68,
+	19, 3, 2, 2, 2, 69, 74, 5, 16, 9, 2, 70, 74, 5, 14, 8, 2, 71, 74, 5, 18,
+	10, 2, 72, 74, 5, 8, 5, 2, 73, 69, 3, 2, 2, 2, 73, 70, 3, 2, 2, 2, 73,
+	71, 3, 2, 2, 2, 73, 72, 3, 2, 2, 2, 74, 77, 3, 2, 2, 2, 75, 73, 3, 2, 2,
+	2, 75, 76, 3, 2, 2, 2, 76, 21, 3, 2, 2, 2, 77, 75, 3, 2, 2, 2, 7, 31, 45,
+	57, 73, 75,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
-	"", "", "", "','", "':'", "'='", "'let'", "';'", "'const'", "", "", "'function'",
-	"'('", "')'", "'number'", "'i8'", "'i16'",
+	"", "", "", "','", "':'", "'='", "';'", "'('", "')'", "'{'", "'}'", "'let'",
+	"'const'", "'function'", "'number'", "'i8'", "'i16'",
 }
 var symbolicNames = []string{
 	"", "MultiLineComment", "SingleLineComment", "Comma", "Colon", "EqualSign",
-	"Let", "Semicolon", "Const", "Identifier", "NumberLiteral", "Function",
-	"OPEN_PARENTHESIS", "CLOSED_PARENTHESIS", "INT", "I8", "I16", "WhiteSpaces",
-	"LineTerminator", "NumericLiteral",
+	"Semicolon", "OPEN_PARENTHESIS", "CLOSED_PARENTHESIS", "OPEN_CURLY", "CLOSED_CURLY",
+	"Let", "Const", "Function", "INT", "I8", "I16", "NumberLiteral", "Identifier",
+	"WhiteSpaces", "LineTerminator",
 }
 
 var ruleNames = []string{
-	"types", "typeAnnotation", "expression", "variableDeclaration", "functionCall",
+	"types", "typeAnnotation", "block", "functionDeclaration", "expression",
+	"assignmentStatement", "statement", "variableDeclaration", "functionCall",
 	"program",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
@@ -86,30 +101,35 @@ const (
 	NJSParserComma              = 3
 	NJSParserColon              = 4
 	NJSParserEqualSign          = 5
-	NJSParserLet                = 6
-	NJSParserSemicolon          = 7
-	NJSParserConst              = 8
-	NJSParserIdentifier         = 9
-	NJSParserNumberLiteral      = 10
-	NJSParserFunction           = 11
-	NJSParserOPEN_PARENTHESIS   = 12
-	NJSParserCLOSED_PARENTHESIS = 13
+	NJSParserSemicolon          = 6
+	NJSParserOPEN_PARENTHESIS   = 7
+	NJSParserCLOSED_PARENTHESIS = 8
+	NJSParserOPEN_CURLY         = 9
+	NJSParserCLOSED_CURLY       = 10
+	NJSParserLet                = 11
+	NJSParserConst              = 12
+	NJSParserFunction           = 13
 	NJSParserINT                = 14
 	NJSParserI8                 = 15
 	NJSParserI16                = 16
-	NJSParserWhiteSpaces        = 17
-	NJSParserLineTerminator     = 18
-	NJSParserNumericLiteral     = 19
+	NJSParserNumberLiteral      = 17
+	NJSParserIdentifier         = 18
+	NJSParserWhiteSpaces        = 19
+	NJSParserLineTerminator     = 20
 )
 
 // NJSParser rules.
 const (
 	NJSParserRULE_types               = 0
 	NJSParserRULE_typeAnnotation      = 1
-	NJSParserRULE_expression          = 2
-	NJSParserRULE_variableDeclaration = 3
-	NJSParserRULE_functionCall        = 4
-	NJSParserRULE_program             = 5
+	NJSParserRULE_block               = 2
+	NJSParserRULE_functionDeclaration = 3
+	NJSParserRULE_expression          = 4
+	NJSParserRULE_assignmentStatement = 5
+	NJSParserRULE_statement           = 6
+	NJSParserRULE_variableDeclaration = 7
+	NJSParserRULE_functionCall        = 8
+	NJSParserRULE_program             = 9
 )
 
 // ITypesContext is an interface to support dynamic dispatch.
@@ -205,7 +225,7 @@ func (p *NJSParser) Types() (localctx ITypesContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(12)
+		p.SetState(20)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<NJSParserINT)|(1<<NJSParserI8)|(1<<NJSParserI16))) != 0) {
@@ -313,12 +333,278 @@ func (p *NJSParser) TypeAnnotation() (localctx ITypeAnnotationContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(14)
+		p.SetState(22)
 		p.Match(NJSParserColon)
 	}
 	{
-		p.SetState(15)
+		p.SetState(23)
 		p.Types()
+	}
+
+	return localctx
+}
+
+// IBlockContext is an interface to support dynamic dispatch.
+type IBlockContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsBlockContext differentiates from other interfaces.
+	IsBlockContext()
+}
+
+type BlockContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyBlockContext() *BlockContext {
+	var p = new(BlockContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = NJSParserRULE_block
+	return p
+}
+
+func (*BlockContext) IsBlockContext() {}
+
+func NewBlockContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *BlockContext {
+	var p = new(BlockContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = NJSParserRULE_block
+
+	return p
+}
+
+func (s *BlockContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *BlockContext) OPEN_CURLY() antlr.TerminalNode {
+	return s.GetToken(NJSParserOPEN_CURLY, 0)
+}
+
+func (s *BlockContext) CLOSED_CURLY() antlr.TerminalNode {
+	return s.GetToken(NJSParserCLOSED_CURLY, 0)
+}
+
+func (s *BlockContext) AllStatement() []IStatementContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IStatementContext)(nil)).Elem())
+	var tst = make([]IStatementContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IStatementContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *BlockContext) Statement(i int) IStatementContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IStatementContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IStatementContext)
+}
+
+func (s *BlockContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *BlockContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *BlockContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(NJSParserListener); ok {
+		listenerT.EnterBlock(s)
+	}
+}
+
+func (s *BlockContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(NJSParserListener); ok {
+		listenerT.ExitBlock(s)
+	}
+}
+
+func (p *NJSParser) Block() (localctx IBlockContext) {
+	localctx = NewBlockContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 4, NJSParserRULE_block)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(25)
+		p.Match(NJSParserOPEN_CURLY)
+	}
+	p.SetState(29)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == NJSParserIdentifier {
+		{
+			p.SetState(26)
+			p.Statement()
+		}
+
+		p.SetState(31)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+	}
+	{
+		p.SetState(32)
+		p.Match(NJSParserCLOSED_CURLY)
+	}
+
+	return localctx
+}
+
+// IFunctionDeclarationContext is an interface to support dynamic dispatch.
+type IFunctionDeclarationContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsFunctionDeclarationContext differentiates from other interfaces.
+	IsFunctionDeclarationContext()
+}
+
+type FunctionDeclarationContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyFunctionDeclarationContext() *FunctionDeclarationContext {
+	var p = new(FunctionDeclarationContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = NJSParserRULE_functionDeclaration
+	return p
+}
+
+func (*FunctionDeclarationContext) IsFunctionDeclarationContext() {}
+
+func NewFunctionDeclarationContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionDeclarationContext {
+	var p = new(FunctionDeclarationContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = NJSParserRULE_functionDeclaration
+
+	return p
+}
+
+func (s *FunctionDeclarationContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *FunctionDeclarationContext) Function() antlr.TerminalNode {
+	return s.GetToken(NJSParserFunction, 0)
+}
+
+func (s *FunctionDeclarationContext) Identifier() antlr.TerminalNode {
+	return s.GetToken(NJSParserIdentifier, 0)
+}
+
+func (s *FunctionDeclarationContext) OPEN_PARENTHESIS() antlr.TerminalNode {
+	return s.GetToken(NJSParserOPEN_PARENTHESIS, 0)
+}
+
+func (s *FunctionDeclarationContext) CLOSED_PARENTHESIS() antlr.TerminalNode {
+	return s.GetToken(NJSParserCLOSED_PARENTHESIS, 0)
+}
+
+func (s *FunctionDeclarationContext) Block() IBlockContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IBlockContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IBlockContext)
+}
+
+func (s *FunctionDeclarationContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *FunctionDeclarationContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *FunctionDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(NJSParserListener); ok {
+		listenerT.EnterFunctionDeclaration(s)
+	}
+}
+
+func (s *FunctionDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(NJSParserListener); ok {
+		listenerT.ExitFunctionDeclaration(s)
+	}
+}
+
+func (p *NJSParser) FunctionDeclaration() (localctx IFunctionDeclarationContext) {
+	localctx = NewFunctionDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 6, NJSParserRULE_functionDeclaration)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(34)
+		p.Match(NJSParserFunction)
+	}
+	{
+		p.SetState(35)
+		p.Match(NJSParserIdentifier)
+	}
+	{
+		p.SetState(36)
+		p.Match(NJSParserOPEN_PARENTHESIS)
+	}
+	{
+		p.SetState(37)
+		p.Match(NJSParserCLOSED_PARENTHESIS)
+	}
+	{
+		p.SetState(38)
+		p.Block()
 	}
 
 	return localctx
@@ -366,8 +652,18 @@ func (s *ExpressionContext) Identifier() antlr.TerminalNode {
 	return s.GetToken(NJSParserIdentifier, 0)
 }
 
-func (s *ExpressionContext) NumericLiteral() antlr.TerminalNode {
-	return s.GetToken(NJSParserNumericLiteral, 0)
+func (s *ExpressionContext) NumberLiteral() antlr.TerminalNode {
+	return s.GetToken(NJSParserNumberLiteral, 0)
+}
+
+func (s *ExpressionContext) FunctionCall() IFunctionCallContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFunctionCallContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunctionCallContext)
 }
 
 func (s *ExpressionContext) GetRuleContext() antlr.RuleContext {
@@ -392,8 +688,136 @@ func (s *ExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *NJSParser) Expression() (localctx IExpressionContext) {
 	localctx = NewExpressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, NJSParserRULE_expression)
-	var _la int
+	p.EnterRule(localctx, 8, NJSParserRULE_expression)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.SetState(43)
+	p.GetErrorHandler().Sync(p)
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 1, p.GetParserRuleContext()) {
+	case 1:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(40)
+			p.Match(NJSParserIdentifier)
+		}
+
+	case 2:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(41)
+			p.Match(NJSParserNumberLiteral)
+		}
+
+	case 3:
+		p.EnterOuterAlt(localctx, 3)
+		{
+			p.SetState(42)
+			p.FunctionCall()
+		}
+
+	}
+
+	return localctx
+}
+
+// IAssignmentStatementContext is an interface to support dynamic dispatch.
+type IAssignmentStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsAssignmentStatementContext differentiates from other interfaces.
+	IsAssignmentStatementContext()
+}
+
+type AssignmentStatementContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyAssignmentStatementContext() *AssignmentStatementContext {
+	var p = new(AssignmentStatementContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = NJSParserRULE_assignmentStatement
+	return p
+}
+
+func (*AssignmentStatementContext) IsAssignmentStatementContext() {}
+
+func NewAssignmentStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *AssignmentStatementContext {
+	var p = new(AssignmentStatementContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = NJSParserRULE_assignmentStatement
+
+	return p
+}
+
+func (s *AssignmentStatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *AssignmentStatementContext) Identifier() antlr.TerminalNode {
+	return s.GetToken(NJSParserIdentifier, 0)
+}
+
+func (s *AssignmentStatementContext) EqualSign() antlr.TerminalNode {
+	return s.GetToken(NJSParserEqualSign, 0)
+}
+
+func (s *AssignmentStatementContext) Expression() IExpressionContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpressionContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpressionContext)
+}
+
+func (s *AssignmentStatementContext) Semicolon() antlr.TerminalNode {
+	return s.GetToken(NJSParserSemicolon, 0)
+}
+
+func (s *AssignmentStatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *AssignmentStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *AssignmentStatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(NJSParserListener); ok {
+		listenerT.EnterAssignmentStatement(s)
+	}
+}
+
+func (s *AssignmentStatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(NJSParserListener); ok {
+		listenerT.ExitAssignmentStatement(s)
+	}
+}
+
+func (p *NJSParser) AssignmentStatement() (localctx IAssignmentStatementContext) {
+	localctx = NewAssignmentStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 10, NJSParserRULE_assignmentStatement)
 
 	defer func() {
 		p.ExitRule()
@@ -413,15 +837,117 @@ func (p *NJSParser) Expression() (localctx IExpressionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(17)
-		_la = p.GetTokenStream().LA(1)
+		p.SetState(45)
+		p.Match(NJSParserIdentifier)
+	}
+	{
+		p.SetState(46)
+		p.Match(NJSParserEqualSign)
+	}
+	{
+		p.SetState(47)
+		p.Expression()
+	}
+	{
+		p.SetState(48)
+		p.Match(NJSParserSemicolon)
+	}
 
-		if !(_la == NJSParserIdentifier || _la == NJSParserNumericLiteral) {
-			p.GetErrorHandler().RecoverInline(p)
-		} else {
-			p.GetErrorHandler().ReportMatch(p)
-			p.Consume()
+	return localctx
+}
+
+// IStatementContext is an interface to support dynamic dispatch.
+type IStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsStatementContext differentiates from other interfaces.
+	IsStatementContext()
+}
+
+type StatementContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyStatementContext() *StatementContext {
+	var p = new(StatementContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = NJSParserRULE_statement
+	return p
+}
+
+func (*StatementContext) IsStatementContext() {}
+
+func NewStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *StatementContext {
+	var p = new(StatementContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = NJSParserRULE_statement
+
+	return p
+}
+
+func (s *StatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *StatementContext) AssignmentStatement() IAssignmentStatementContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IAssignmentStatementContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IAssignmentStatementContext)
+}
+
+func (s *StatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *StatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *StatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(NJSParserListener); ok {
+		listenerT.EnterStatement(s)
+	}
+}
+
+func (s *StatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(NJSParserListener); ok {
+		listenerT.ExitStatement(s)
+	}
+}
+
+func (p *NJSParser) Statement() (localctx IStatementContext) {
+	localctx = NewStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 12, NJSParserRULE_statement)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
 		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(50)
+		p.AssignmentStatement()
 	}
 
 	return localctx
@@ -517,7 +1043,7 @@ func (s *VariableDeclarationContext) ExitRule(listener antlr.ParseTreeListener) 
 
 func (p *NJSParser) VariableDeclaration() (localctx IVariableDeclarationContext) {
 	localctx = NewVariableDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, NJSParserRULE_variableDeclaration)
+	p.EnterRule(localctx, 14, NJSParserRULE_variableDeclaration)
 	var _la int
 
 	defer func() {
@@ -538,34 +1064,34 @@ func (p *NJSParser) VariableDeclaration() (localctx IVariableDeclarationContext)
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(19)
+		p.SetState(52)
 		p.Match(NJSParserLet)
 	}
 	{
-		p.SetState(20)
+		p.SetState(53)
 		p.Match(NJSParserIdentifier)
 	}
-	p.SetState(22)
+	p.SetState(55)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == NJSParserColon {
 		{
-			p.SetState(21)
+			p.SetState(54)
 			p.TypeAnnotation()
 		}
 
 	}
 	{
-		p.SetState(24)
+		p.SetState(57)
 		p.Match(NJSParserEqualSign)
 	}
 	{
-		p.SetState(25)
+		p.SetState(58)
 		p.Match(NJSParserNumberLiteral)
 	}
 	{
-		p.SetState(26)
+		p.SetState(59)
 		p.Match(NJSParserSemicolon)
 	}
 
@@ -658,7 +1184,7 @@ func (s *FunctionCallContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *NJSParser) FunctionCall() (localctx IFunctionCallContext) {
 	localctx = NewFunctionCallContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, NJSParserRULE_functionCall)
+	p.EnterRule(localctx, 16, NJSParserRULE_functionCall)
 
 	defer func() {
 		p.ExitRule()
@@ -678,23 +1204,23 @@ func (p *NJSParser) FunctionCall() (localctx IFunctionCallContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(28)
+		p.SetState(61)
 		p.Match(NJSParserIdentifier)
 	}
 	{
-		p.SetState(29)
+		p.SetState(62)
 		p.Match(NJSParserOPEN_PARENTHESIS)
 	}
 	{
-		p.SetState(30)
+		p.SetState(63)
 		p.Expression()
 	}
 	{
-		p.SetState(31)
+		p.SetState(64)
 		p.Match(NJSParserCLOSED_PARENTHESIS)
 	}
 	{
-		p.SetState(32)
+		p.SetState(65)
 		p.Match(NJSParserSemicolon)
 	}
 
@@ -762,6 +1288,29 @@ func (s *ProgramContext) VariableDeclaration(i int) IVariableDeclarationContext 
 	return t.(IVariableDeclarationContext)
 }
 
+func (s *ProgramContext) AllStatement() []IStatementContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IStatementContext)(nil)).Elem())
+	var tst = make([]IStatementContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IStatementContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *ProgramContext) Statement(i int) IStatementContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IStatementContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IStatementContext)
+}
+
 func (s *ProgramContext) AllFunctionCall() []IFunctionCallContext {
 	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IFunctionCallContext)(nil)).Elem())
 	var tst = make([]IFunctionCallContext, len(ts))
@@ -783,6 +1332,29 @@ func (s *ProgramContext) FunctionCall(i int) IFunctionCallContext {
 	}
 
 	return t.(IFunctionCallContext)
+}
+
+func (s *ProgramContext) AllFunctionDeclaration() []IFunctionDeclarationContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IFunctionDeclarationContext)(nil)).Elem())
+	var tst = make([]IFunctionDeclarationContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IFunctionDeclarationContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *ProgramContext) FunctionDeclaration(i int) IFunctionDeclarationContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFunctionDeclarationContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunctionDeclarationContext)
 }
 
 func (s *ProgramContext) GetRuleContext() antlr.RuleContext {
@@ -807,7 +1379,7 @@ func (s *ProgramContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *NJSParser) Program() (localctx IProgramContext) {
 	localctx = NewProgramContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, NJSParserRULE_program)
+	p.EnterRule(localctx, 18, NJSParserRULE_program)
 	var _la int
 
 	defer func() {
@@ -827,32 +1399,41 @@ func (p *NJSParser) Program() (localctx IProgramContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(38)
+	p.SetState(73)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == NJSParserLet || _la == NJSParserIdentifier {
-		p.SetState(36)
+	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<NJSParserLet)|(1<<NJSParserFunction)|(1<<NJSParserIdentifier))) != 0 {
+		p.SetState(71)
 		p.GetErrorHandler().Sync(p)
-
-		switch p.GetTokenStream().LA(1) {
-		case NJSParserLet:
+		switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 3, p.GetParserRuleContext()) {
+		case 1:
 			{
-				p.SetState(34)
+				p.SetState(67)
 				p.VariableDeclaration()
 			}
 
-		case NJSParserIdentifier:
+		case 2:
 			{
-				p.SetState(35)
+				p.SetState(68)
+				p.Statement()
+			}
+
+		case 3:
+			{
+				p.SetState(69)
 				p.FunctionCall()
 			}
 
-		default:
-			panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		case 4:
+			{
+				p.SetState(70)
+				p.FunctionDeclaration()
+			}
+
 		}
 
-		p.SetState(40)
+		p.SetState(75)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
