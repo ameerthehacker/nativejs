@@ -40,9 +40,9 @@ func main() {
 					// parse the source code
 					grammarParser := parser.NewParser(string(source))
 					// generate LLVM IR
-					codegen.GenerateIR(grammarParser.Program())
+					llvmIR := codegen.GenerateIR(grammarParser.Program())
 
-					print(codegen.GetIR())
+					print(llvmIR)
 
 					return nil
 				} else {

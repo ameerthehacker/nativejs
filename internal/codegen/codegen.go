@@ -8,7 +8,6 @@ import (
 )
 
 var module *ir.Module
-var currentType types.Type
 
 type njsListener struct {
 	parser.BaseNJSParserListener
@@ -17,26 +16,22 @@ type njsListener struct {
 func (njsListener) EnterTypes(cxt *parser.TypesContext) {
 	switch {
 	case cxt.I8() != nil:
-		currentType = types.I8
+		variableType = types.I8
 	case cxt.I16() != nil:
-		currentType = types.I16
+		variableType = types.I16
 	case cxt.INT() != nil:
-		currentType = types.I32
+		variableType = types.I32
 	}
 }
 
 func (njsListener) EnterVariableDeclaration(cxt *parser.VariableDeclarationContext) {
-	variableName := cxt.Identifier().GetText()
-
-	module.NewGlobal(variableName, currentType)
+	GenVariableDeclaration(module, cxt)
 }
 
-func GenerateIR(ctx parser.IProgramContext) {
+func GenerateIR(cxt parser.IProgramContext) string {
 	module = ir.NewModule()
 
-	antlr.ParseTreeWalkerDefault.Walk(&njsListener{}, ctx)
-}
+	antlr.ParseTreeWalkerDefault.Walk(&njsListener{}, cxt)
 
-func GetIR() string {
 	return module.String()
 }
