@@ -7,6 +7,10 @@ options {
 types: INT | I8 | I16;
 typeAnnotation: ':' types;
 
+expression: Identifier | NumericLiteral;
+
 variableDeclaration: 'let' Identifier typeAnnotation? '=' NumberLiteral ';';
 
-program: variableDeclaration;
+functionCall: Identifier '(' expression ')' ';';
+
+program: (variableDeclaration | functionCall)*;

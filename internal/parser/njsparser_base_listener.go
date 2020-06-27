@@ -33,11 +33,23 @@ func (s *BaseNJSParserListener) EnterTypeAnnotation(ctx *TypeAnnotationContext) 
 // ExitTypeAnnotation is called when production typeAnnotation is exited.
 func (s *BaseNJSParserListener) ExitTypeAnnotation(ctx *TypeAnnotationContext) {}
 
+// EnterExpression is called when production expression is entered.
+func (s *BaseNJSParserListener) EnterExpression(ctx *ExpressionContext) {}
+
+// ExitExpression is called when production expression is exited.
+func (s *BaseNJSParserListener) ExitExpression(ctx *ExpressionContext) {}
+
 // EnterVariableDeclaration is called when production variableDeclaration is entered.
 func (s *BaseNJSParserListener) EnterVariableDeclaration(ctx *VariableDeclarationContext) {}
 
 // ExitVariableDeclaration is called when production variableDeclaration is exited.
 func (s *BaseNJSParserListener) ExitVariableDeclaration(ctx *VariableDeclarationContext) {}
+
+// EnterFunctionCall is called when production functionCall is entered.
+func (s *BaseNJSParserListener) EnterFunctionCall(ctx *FunctionCallContext) {}
+
+// ExitFunctionCall is called when production functionCall is exited.
+func (s *BaseNJSParserListener) ExitFunctionCall(ctx *FunctionCallContext) {}
 
 // EnterProgram is called when production program is entered.
 func (s *BaseNJSParserListener) EnterProgram(ctx *ProgramContext) {}

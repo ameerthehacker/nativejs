@@ -10,6 +10,9 @@ Semicolon:               ';';
 Const:                   'const';
 Identifier:              [a-zA-Z]+;
 NumberLiteral:           [0-9]+;
+Function:                'function';
+OPEN_PARENTHESIS:        '(';
+CLOSED_PARENTHESIS:      ')';
 // types
 INT:                     'number';
 I8:                      'i8';
