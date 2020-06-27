@@ -15,10 +15,10 @@ expression:  Identifier | NumberLiteral | functionCall;
 
 assignmentStatement: Identifier '=' expression ';';
 
-statement: assignmentStatement;
+statement: assignmentStatement | expression;
 
 variableDeclaration: 'let' Identifier typeAnnotation? '=' NumberLiteral ';';
 
-functionCall: Identifier '(' expression ')' ';';
+functionCall: Identifier '(' expression* ')' ';';
 
 program: (variableDeclaration | statement | functionCall | functionDeclaration)*;

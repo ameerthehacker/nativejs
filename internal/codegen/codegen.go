@@ -24,6 +24,12 @@ func (njsListener) EnterTypes(cxt *parser.TypesContext) {
 	}
 }
 
+func (njsListener) EnterFunctionDeclaration(cxt *parser.FunctionDeclarationContext) {
+	functionName := cxt.Identifier().GetText()
+
+	println("Declared function: ", functionName)
+}
+
 func (njsListener) EnterVariableDeclaration(cxt *parser.VariableDeclarationContext) {
 	GenVariableDeclaration(module, cxt)
 }
